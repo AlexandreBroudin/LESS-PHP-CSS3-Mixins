@@ -1,11 +1,19 @@
-// border-radius
+// Box-sizing (apply to * { })
+.box-sizing(@model : border-box) {
+  -webkit-box-sizing  : @arguments;
+     -moz-box-sizing  : @arguments;
+      -ms-box-sizing  : @arguments;
+          box-sizing  : @arguments;
+}
+
+// Border-radius
 .radius(@top_left : 5px, @top_right : 5px, @bottom_right : 5px, @bottom_left : 5px)
 {
   -webkit-border-radius : @arguments;      -moz-background-clip : padding;
      -moz-border-radius : @arguments;   -webkit-background-clip : padding-box;
           border-radius : @arguments;           background-clip : padding-box;    
 }
-// box-shadow
+// Box-shadow
 .box-shadow(@x : 0, @y : 0, @blur : 5px, @color : #888)
 {
   -webkit-box-shadow : @arguments;
@@ -13,10 +21,10 @@
           box-shadow : @arguments;
 }
 
-// text-shadow
+// Text-shadow
 .text-shadow(@x : 1px, @y : 1px, @blur : 2px, @color : #fff) { text-shadow:@arguments; }
 
-// background-size
+// Background-size
 .background-size (@x : 100%, @y : 100%)
 {
   -webkit-background-size : @arguments;
@@ -24,14 +32,14 @@
           background-size : @arguments;
 }
 
-// background-rgba
+// Background-rgba
 .background-rgba(@color : #ffffff,@opacity : 60)
 {
   background-color : transparent;
   background-color : fade(@arguments);
 }
 
-// linear-gradient
+// Linear-gradient
 .linear-gradient(@direction : top, @from:#000, @to:#EEE)
 {
   background : @from;
@@ -42,7 +50,7 @@
   background : linear-gradient(@direction, @from, @to);
 }
 
-// radial-gradient
+// Radial-gradient
 .radial-gradient(@hv-position : center center, @shape-size : circle cover, @color_start : #ffffff, @color_stop : #000000   )
 {
   background : @color_start;
@@ -53,7 +61,7 @@
   background : radial-gradient(@hv-position, @shape-size, @color_start, @color_stop)
 }
 
-// transition
+// Transition
 .transition(@range : all, @time : 0.1s, @ease : ease-in-out)
 {
      -moz-transition : @arguments;
@@ -62,7 +70,7 @@
           transition : @arguments;
 }
 
-// skew
+// Skew
 .skew(@x:35deg, @y:0deg)
 {
   -webkit-transform : skew(@x,@y);
@@ -72,7 +80,7 @@
           transform : skew(@x,@y);
 }
 
-// scale
+// Scale
 .scale(@scale : 1)
 {
   -webkit-transform : scale(@arguments);
@@ -82,7 +90,7 @@
           transform : scale(@arguments);
 }
 
-// rotate
+// Rotate
 .rotate(@angle:35deg)
 {
    -webkit-transform  : rotate(@angle);
@@ -92,7 +100,7 @@
            transform  : rotate(@angle); 
 }
 
-// translate
+// Translate
 .translate(@x: 10px, @y: 10px)
 {
   -webkit-transform : translate(@x,@y);
@@ -102,7 +110,7 @@
           transform : translate(@x,@y);
 }
 
-// 3D transform
+// 3D Transform
 .3d-transform(@z : 300, @deg : 180deg) 
 {
       -webkit-perspective : @z;  -webkit-transform : rotateY(@deg); -webkit-transform-style : preserve-3d;
@@ -111,7 +119,7 @@
               perspective : @z;          transform : rotateY(@deg);         transform-style : preserve-3d;
 }
 
-// columns
+// Columns
 .columns(@nb : 4, @width: 100px, @gap : 10px )
 {
     -webkit-column-count  : @nb;  -webkit-column-width  : @width; -webkit-column-gap  : @gap;
@@ -119,4 +127,17 @@
          -o-column-count  : @nb;       -o-column-width  : @width;      -o-column-gap  : @gap;
         -ms-column-count  : @nb;      -ms-column-width  : @width;     -ms-column-gap  : @gap;
             column-count  : @nb;          column-width  : @width;         column-gap  : @gap;
+}
+
+
+//***Tools
+
+// Image replacement & Text hiding
+
+.ir,.hide-text {
+  background-color : transparent; 
+              font : 0/0 a;
+       text-shadow : none;
+             color : transparent;
+            border : 0;
 }
