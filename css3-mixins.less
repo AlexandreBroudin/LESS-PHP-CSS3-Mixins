@@ -9,9 +9,9 @@
 // Border-radius
 .radius(@top_left : 5px, @top_right : 5px, @bottom_right : 5px, @bottom_left : 5px)
 {
-  -webkit-border-radius : @arguments;      -moz-background-clip : padding;
-     -moz-border-radius : @arguments;   -webkit-background-clip : padding-box;
-          border-radius : @arguments;           background-clip : padding-box;    
+  -webkit-border-radius : @arguments; -webkit-background-clip : padding-box;
+     -moz-border-radius : @arguments;    -moz-background-clip : padding;
+          border-radius : @arguments;         background-clip : padding-box;    
 }
 // Box-shadow
 .box-shadow(@x : 0, @y : 0, @blur : 5px, @color : #888)
