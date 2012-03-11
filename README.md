@@ -1,4 +1,4 @@
-# [LESS-PHP CSS3 Mixins starter kit](http://alexandrebroudin.net/article/less-css3,14.html)
+# [LESS-PHP useful CSS3 Mixins](http://alexandrebroudin.net/article/less-css3,14.html)
 by [Alexandre Broudin](http://alexandrebroudin.net)
 Another LESS useful CSS3 mixins, with [LESS-PHP] (http://leafo.net/lessphp/)
 
