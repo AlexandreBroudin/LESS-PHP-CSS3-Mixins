@@ -1,7 +1,13 @@
-// Box-sizing (apply to * { })
+// Variables
+@img_path   : ~"/img/";
+@font_path  : ~"/font/";
+
+
+// Box-sizing
 .box-sizing(@model : border-box) {
   -webkit-box-sizing  : @arguments;
      -moz-box-sizing  : @arguments;
+       -o-box-sizing  : @arguments;
       -ms-box-sizing  : @arguments;
           box-sizing  : @arguments;
 }
@@ -16,13 +22,25 @@
           hyphens : auto;
 }
 
-// Border-radius
-.radius(@top_left : 5px, @top_right : 5px, @bottom_right : 5px, @bottom_left : 5px)
+// Border-radius + fix @see : http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed
+.border-radius(@top_left : 5px, @top_right : 5px, @bottom_right : 5px, @bottom_left : 5px)
 {
   -webkit-border-radius : @arguments; -webkit-background-clip : padding-box;
      -moz-border-radius : @arguments;    -moz-background-clip : padding;
           border-radius : @arguments;         background-clip : padding-box;    
 }
+
+// Border-image - webkit is the last , because unprefixed syntax is buggy
+.border-image(@TopOffset: 10, @RightOffset : 10, @BottomOffset: 10, @LeftOffset: 10, @image : ~"border-image.png"  )
+{
+
+     -moz-border-image : url(@{img_path}@{image}) @TopOffset @RightOffset @BottomOffset @LeftOffset repeat;
+       -o-border-image : url(@{img_path}@{image}) @TopOffset @RightOffset @BottomOffset @LeftOffset repeat;
+          border-image : url(@{img_path}@{image}) @TopOffset @RightOffset @BottomOffset @LeftOffset repeat;
+  -webkit-border-image : url(@{img_path}@{image}) @TopOffset @RightOffset @BottomOffset @LeftOffset repeat;
+
+}
+
 // Box-shadow
 .box-shadow(@x : 0, @y : 0, @blur : 5px, @color : #888)
 {
@@ -53,8 +71,8 @@
 .linear-gradient(@direction : top, @from:#000, @to:#EEE)
 {
   background : @from;
-  background : -moz-linear-gradient(@direction, @from, @to);
   background : -webkit-linear-gradient(@direction, @from, @to);
+  background : -moz-linear-gradient(@direction, @from, @to);
   background : -o-linear-gradient(@direction, @from, @to);
   background : -ms-linear-gradient(@direction, @from, @to);
   background : linear-gradient(@direction, @from, @to);
@@ -64,8 +82,8 @@
 .radial-gradient(@hv-position : center center, @shape-size : circle cover, @color_start : #ffffff, @color_stop : #000000   )
 {
   background : @color_start;
-  background : -moz-radial-gradient(@hv-position, @shape-size, @color_start, @color_stop);
   background : -webkit-radial-gradient(@hv-position, @shape-size, @color_start, @color_stop);
+  background : -moz-radial-gradient(@hv-position, @shape-size, @color_start, @color_stop);
   background : -o-radial-gradient(@hv-position, @shape-size, @color_start, @color_stop);
   background : -ms-radial-gradient(@hv-position, @shape-size, @color_start, @color_stop);
   background : radial-gradient(@hv-position, @shape-size, @color_start, @color_stop)
@@ -74,8 +92,8 @@
 // Transition
 .transition(@range : all, @time : 0.1s, @ease : ease-in-out)
 {
-     -moz-transition : @arguments;
   -webkit-transition : @arguments;
+     -moz-transition : @arguments;
        -o-transition : @arguments;
           transition : @arguments;
 }
@@ -89,7 +107,20 @@
       -ms-transform : skew(@x,@y);
           transform : skew(@x,@y);
 }
-
+.skewX (@x:35deg) {
+  -webkit-transform : skewX(@x);
+     -moz-transform : skewX(@x);
+       -o-transform : skewX(@x);
+      -ms-transform : skewX(@x);
+          transform : skewX(@x);
+}
+.skewY (@y:35deg) {
+  -webkit-transform : skewY(@y);
+     -moz-transform : skewY(@y);
+       -o-transform : skewY(@y);
+      -ms-transform : skewY(@y);
+          transform : skewY(@y);
+}
 // Scale
 .scale(@scale : 1)
 {
@@ -98,6 +129,22 @@
        -o-transform : scale(@arguments);
       -ms-transform : scale(@arguments);
           transform : scale(@arguments);
+}
+.scaleX(@scale : 1)
+{
+  -webkit-transform : scaleX(@arguments);
+     -moz-transform : scaleX(@arguments);
+       -o-transform : scaleX(@arguments);
+      -ms-transform : scaleX(@arguments);
+          transform : scaleX(@arguments);
+}
+.scaleY(@scale : 1)
+{
+  -webkit-transform : scaleY(@arguments);
+     -moz-transform : scaleY(@arguments);
+       -o-transform : scaleY(@arguments);
+      -ms-transform : scaleY(@arguments);
+          transform : scaleY(@arguments);
 }
 
 // Rotate
@@ -108,6 +155,20 @@
         -o-transform  : rotate(@angle);
        -ms-transform  : rotate(@angle);
            transform  : rotate(@angle); 
+}
+
+// Rotate 3D
+.rotate3d (@deg1:35deg, @deg2:35deg, @deg3:35deg){
+        -webkit-transform : rotateX(@deg1) rotateY(@deg2) rotateZ(@deg3);
+  -webkit-transform-style : preserve-3d;
+           -moz-transform : rotateX(@deg1) rotateY(@deg2) rotateZ(@deg3);
+             -o-transform : rotateX(@deg1) rotateY(@deg2) rotateZ(@deg3);
+       -o-transform-style : preserve-3d;
+     -moz-transform-style : preserve-3d;
+            -ms-transform : rotateX(@deg1) rotateY(@deg2) rotateZ(@deg3);
+      -ms-transform-style : preserve-3d;
+               transform  : rotateX(@deg1) rotateY(@deg2) rotateZ(@deg3);
+         transform-style  : preserve-3d;
 }
 
 // Translate
@@ -125,9 +186,29 @@
 {
       -webkit-perspective : @z;  -webkit-transform : rotateY(@deg); -webkit-transform-style : preserve-3d;
          -moz-perspective : @z;     -moz-transform : rotateY(@deg);    -moz-transform-style : preserve-3d;
+           -o-perspective : @z;       -o-transform : rotateY(@deg);      -o-transform-style : preserve-3d;
           -ms-perspective : @z;      -ms-transform : rotateY(@deg);     -ms-transform-style : preserve-3d;
               perspective : @z;          transform : rotateY(@deg);         transform-style : preserve-3d;
 }
+
+// Transform origin - integer
+.transform-origin (@value : none) {
+  -webkit-transform-origin : @arguments;
+     -moz-transform-origin : @arguments;
+       -o-transform-origin : @arguments;
+      -ms-transform-origin : @arguments;
+          transform-origin : @arguments;
+}
+
+// Transform perspective - integer
+.perspective (@value : none) {
+  -webkit-perspective : @arguments;
+     -moz-perspective : @arguments;
+       -o-perspective : @arguments;
+      -ms-perspective : @arguments;
+          perspective : @arguments;
+  }
+
 
 // Columns
 .columns(@nb : 4, @width: 100px, @gap : 10px )
@@ -139,10 +220,140 @@
             column-count  : @nb;          column-width  : @width;         column-gap  : @gap;
 }
 
+// Tab size
+.box_tabsize(@size : 2) {
+  -moz-tab-size: @size;
+    -o-tab-size: @size;
+       tab-size: @size;
+}
+
+// Transition
+.transition(@properties : all, @duration : 1s, @delay : 1s, @easing : linear) {
+    -webkit-transition: @arguments;
+       -moz-transition: @arguments;
+        -ms-transition: @arguments;
+         -o-transition: @arguments;
+            transition: @arguments;
+}
+
+// Flex Box
+
+.box {
+  display : -webkit-box;
+  display : -moz-box;
+  display : -o-box;
+  display : -ms-box;
+  display : box;
+}
+
+// Values : horizontal , vertical , inline-axis , block-axis , inherit;
+.box-orient (@orient : horizontal) {
+  -webkit-box-orient : @arguments;
+     -moz-box-orient : @arguments;
+       -o-box-orient : @arguments;
+      -ms-box-orient : @arguments;
+         box-orient  : @arguments;
+}
+
+// Values : normal , reverse , inherit
+.box-direction (@direction : normal) {
+  -webkit-box-direction : @arguments;
+     -moz-box-direction : @arguments;
+       -o-box-direction : @arguments;
+      -ms-box-direction : @arguments;
+          box-direction : @arguments;
+}
+
+// Values : start , center , end , justify
+.box-pack (@pack : start) {
+  -webkit-box-pack : @arguments;
+     -moz-box-pack : @arguments;
+       -o-box-pack : @arguments;
+      -ms-box-pack : @arguments;
+          box-pack : @arguments;
+}
+
+// Values : start , center , end , baseline , stretch
+.box-align (@align : start) {
+  -webkit-box-align : @arguments;
+     -moz-box-align : @arguments;
+      -ms-box-align : @arguments;
+       -o-box-align : @arguments;
+          box-align : @arguments;
+}
+
+// Values : single , multiple
+.box-lines (@lines : single) {
+  -webkit-box-lines : @arguments;
+     -moz-box-lines : @arguments;
+       -o-box-lines : @arguments;
+      -ms-box-lines : @arguments;
+          box-lines : @arguments;
+}
+
+// Values : integer
+.box-flex (@flex : 0) {
+  -webkit-box-flex : @arguments;
+     -moz-box-flex : @arguments;
+       -o-box-flex : @arguments;
+      -ms-box-flex : @arguments;
+          box-flex : @arguments;
+}
+
+//Values : integer
+.box-ordinal-group (@group : 0) {
+  -webkit-box-ordinal-group : @arguments;
+     -moz-box-ordinal-group : @arguments;
+       -o-box-ordinal-group : @arguments;
+      -ms-box-ordinal-group : @arguments;
+          box-ordinal-group : @arguments;
+}
+
+
+// @easing list @see : http://matthewlein.com/ceaser/
+
+// Cubic
+@easeInCubic     :  cubic-bezier(0.550, 0.055, 0.675, 0.190);
+@easeOutCubic    :  cubic-bezier(0.215, 0.610, 0.355, 1.000);
+@easeInOutCubic  :  cubic-bezier(0.645, 0.045, 0.355, 1.000);
+
+// Circ
+@easeInCirc      :  cubic-bezier(0.600, 0.040, 0.980, 0.335);
+@easeOutCirc     :  cubic-bezier(0.075, 0.820, 0.165, 1.000);
+@easeInOutCirc   :  cubic-bezier(0.785, 0.135, 0.150, 0.860);
+
+// Expo
+@easeInExpo      :  cubic-bezier(0.950, 0.050, 0.795, 0.035);
+@easeOutExpo     :  cubic-bezier(0.190, 1.000, 0.220, 1.000);
+@easeInOutExpo   :  cubic-bezier(1.000, 0.000, 0.000, 1.000);
+
+// Quad
+@easeInQuad      :  cubic-bezier(0.550, 0.085, 0.680, 0.530);
+@easeOutQuad     :  cubic-bezier(0.250, 0.460, 0.450, 0.940);
+@easeInOutQuad   :  cubic-bezier(0.455, 0.030, 0.515, 0.955);
+
+// Quart
+@easeInQuart     :  cubic-bezier(0.895, 0.030, 0.685, 0.220);
+@easeOutQuart    :  cubic-bezier(0.165, 0.840, 0.440, 1.000);
+@easeInOutQuart  :  cubic-bezier(0.770, 0.000, 0.175, 1.000);
+
+// Quint
+@easeInQuint     :  cubic-bezier(0.755, 0.050, 0.855, 0.060);
+@easeOutQuint    :  cubic-bezier(0.230, 1.000, 0.320, 1.000);
+@easeInOutQuint  :  cubic-bezier(0.860, 0.000, 0.070, 1.000);
+
+// Sine
+@easeInSine      :  cubic-bezier(0.470, 0.000, 0.745, 0.715);
+@easeOutSine     :  cubic-bezier(0.390, 0.575, 0.565, 1.000);
+@easeInOutSine   :  cubic-bezier(0.445, 0.050, 0.550, 0.950);
+
+// Back
+@easeInBack      :  cubic-bezier(0.600, -0.280, 0.735, 0.045);
+@easeOutBack     :  cubic-bezier(0.175,  0.885, 0.320, 1.275);
+@easeInOutBack   :  cubic-bezier(0.680, -0.550, 0.265, 1.550);
+
 
 //***Tools
-
-
 
 // Image replacement & Text hiding
 

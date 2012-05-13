@@ -5,7 +5,8 @@ Another LESS useful CSS3 mixins, with [LESS-PHP] (http://leafo.net/lessphp/)
 ## Features
 * Box sizing
 * Word Break & Hyphens
-* Border radius
+* Border radius + fix
+* Border image
 * Box shadow
 * Text shadow
 * Background size
@@ -16,9 +17,14 @@ Another LESS useful CSS3 mixins, with [LESS-PHP] (http://leafo.net/lessphp/)
 * Skew
 * Scale
 * Rotate
+* Rotate 3D
 * Translate
 * 3D transform
 * Columns
+* Tab size
+* Transition
+* Flex Box
+* Easing list for transitions
 
 ## Tool
 
