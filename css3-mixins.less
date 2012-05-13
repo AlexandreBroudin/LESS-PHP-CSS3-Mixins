@@ -1,7 +1,5 @@
 // Variables
 @img_path   : ~"/img/";
-@font_path  : ~"/font/";
-
 
 // Box-sizing
 .box-sizing(@model : border-box) {
@@ -90,12 +88,12 @@
 }
 
 // Transition
-.transition(@range : all, @time : 0.1s, @ease : ease-in-out)
-{
-  -webkit-transition : @arguments;
-     -moz-transition : @arguments;
-       -o-transition : @arguments;
-          transition : @arguments;
+.transition(@properties : all, @duration : 1s, @delay : 1s, @easing : linear) {
+    -webkit-transition: @arguments;
+       -moz-transition: @arguments;
+        -ms-transition: @arguments;
+         -o-transition: @arguments;
+            transition: @arguments;
 }
 
 // Skew
@@ -225,15 +223,6 @@
   -moz-tab-size: @size;
     -o-tab-size: @size;
        tab-size: @size;
-}
-
-// Transition
-.transition(@properties : all, @duration : 1s, @delay : 1s, @easing : linear) {
-    -webkit-transition: @arguments;
-       -moz-transition: @arguments;
-        -ms-transition: @arguments;
-         -o-transition: @arguments;
-            transition: @arguments;
 }
 
 // Flex Box
