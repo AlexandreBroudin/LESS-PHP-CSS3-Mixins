@@ -29,13 +29,13 @@
 }
 
 // Border-image - webkit is the last , because unprefixed syntax is buggy
-.border-image(@TopOffset: 10, @RightOffset : 10, @BottomOffset: 10, @LeftOffset: 10, @image : ~"border-image.png"  )
+.border-image(@TopOffset: 10, @RightOffset : 10, @BottomOffset: 10, @LeftOffset: 10, @image : ~"border-image.png", @method : repeat  )
 {
 
-     -moz-border-image : url(@{img_path}@{image}) @TopOffset @RightOffset @BottomOffset @LeftOffset repeat;
-       -o-border-image : url(@{img_path}@{image}) @TopOffset @RightOffset @BottomOffset @LeftOffset repeat;
-          border-image : url(@{img_path}@{image}) @TopOffset @RightOffset @BottomOffset @LeftOffset repeat;
-  -webkit-border-image : url(@{img_path}@{image}) @TopOffset @RightOffset @BottomOffset @LeftOffset repeat;
+     -moz-border-image : url(@{img_path}@{image}) @TopOffset @RightOffset @BottomOffset @LeftOffset @method;
+       -o-border-image : url(@{img_path}@{image}) @TopOffset @RightOffset @BottomOffset @LeftOffset @method;
+          border-image : url(@{img_path}@{image}) @TopOffset @RightOffset @BottomOffset @LeftOffset @method;
+  -webkit-border-image : url(@{img_path}@{image}) @TopOffset @RightOffset @BottomOffset @LeftOffset @method;
           border-width : ~"@{TopOffset}px" ~"@{RightOffset}px" ~"@{BottomOffset}px" ~"@{LeftOffset}px";
 
 }
