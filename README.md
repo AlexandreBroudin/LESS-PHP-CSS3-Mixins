@@ -1,5 +1,5 @@
-# [LESS-PHP useful CSS3 Mixins](http://alexandrebroudin.net/article/less-css3,14.html)
-by [Alexandre Broudin](http://alexandrebroudin.net)
+Not maintained anymore
+# LESS-PHP useful CSS3 Mixins
 Another LESS useful CSS3 mixins, with [LESS-PHP] (http://leafo.net/lessphp/)
 
 ## Features
